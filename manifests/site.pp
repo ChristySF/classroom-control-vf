@@ -45,7 +45,7 @@ node default {
   notify { "Hello, my name is ${::hostname}": }
 
   file { '/etc/motd':
-    ensure  => file;
+    ensure  => file,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
