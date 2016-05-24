@@ -44,11 +44,16 @@ node default {
   #   class { 'my_class': }
   notify { "Hello, my name is ${::hostname}": }
 
-  file { '/etc/motd':
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => "this is my attempt at ensuring the motd file exists with correct ownership and perms\n",
+  exec { "cosway 'Welcome to $(::fqdn)!' > /etc/motd":
+    path    => '/usr/bin:/usr/local/bin',
+    creates => '/etc/motd',
   }
+  
+  #file { '/etc/motd':
+  #  ensure  => file,
+  #  owner   => 'root',
+  #  group   => 'root',
+  #  mode    => '0644',
+  #  content => "this is my attempt at ensuring the motd file exists with correct ownership and perms\n",
+  #}
 }
