@@ -44,10 +44,10 @@ node default {
   #   class { 'my_class': }
   notify { "Hello, my name is ${::hostname}": }
 
-  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
-    path    => '/usr/bin:/usr/local/bin',
-    creates => '/etc/motd',
-  }
+  #exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+  #  path    => '/usr/bin:/usr/local/bin',
+  #  creates => '/etc/motd',
+  #}
   
   host { 'testing.puppetlabs.vm':
     ensure => 'present',
@@ -55,11 +55,11 @@ node default {
     target => '/etc/hosts',
   }
   
-  #file { '/etc/motd':
-  #  ensure  => file,
-  #  owner   => 'root',
-  #  group   => 'root',
-  #  mode    => '0644',
-  #  content => "this is my attempt at ensuring the motd file exists with correct ownership and perms\n",
-  #}
+  file { '/etc/motd':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => "this is my attempt at ensuring the motd file exists with correct ownership and perms\n",
+  }
 }
