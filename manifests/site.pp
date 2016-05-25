@@ -57,9 +57,9 @@ node default {
     target => '/etc/hosts',
   }
   
-  if ${::virtual} == 'virtual' {
+  if ${::virtual} {
     $vmname = capitalize($::virtual)
-    notify { "this is a virtual machine - ${vmanme}" }
+    notify { "this is a virtual machine ${vmanme}" }
   }
   
   file { '/etc/motd':
