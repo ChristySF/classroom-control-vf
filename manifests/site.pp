@@ -49,7 +49,6 @@ node default {
   #  creates => '/etc/motd',
   #}
   
-  include users
   include skeleton
   
   host { 'testing.puppetlabs.vm':
