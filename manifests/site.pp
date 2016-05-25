@@ -57,6 +57,11 @@ node default {
     target => '/etc/hosts',
   }
   
+  if $::virtual = 'virtual {
+    $vmname = capitalize($::virtual)
+    notify { "this is a virtual machine - ${vmanme}" }
+  }
+  
   file { '/etc/motd':
     ensure  => file,
     owner   => 'root',
