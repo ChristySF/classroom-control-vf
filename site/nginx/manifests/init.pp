@@ -62,43 +62,34 @@ class nginx {
      provider => rpm, 
      require  => File['nginx rpm'], 
    } 
-
+   
+   File {
+     owner   => 'root',
+     group   => 'root',
+     mode    => '0644',
+     require => Package['nginx'],
+   }
+   
    file { '/var/www/' :  
      ensure  => directory,  
-     owner   => 'root',  
-     group   => 'root',  
-     mode    => '0775',  
-     require => Package['nginx'],  
    }  
    
    file { '/var/www/index.html' :  
      ensure  => file,  
-     owner   => 'root',  
-     group   => 'root',  
-     mode    => '0664',  
      source  => 'puppet:///modules/nginx/index.html',  
-     require => Package['nginx'],  
    }  
    
    file { 'nginx conf' :  
      ensure  => file,  
      path    => '/etc/nginx/nginx.conf',  
-     owner   => 'root',  
-     group   => 'root',  
-     mode    => '0664',  
      source  => 'puppet:///modules/nginx/nginx.conf',  
-     require => Package['nginx'],  
      notify  => Service['nginx'],  
    }  
    
    file { 'default conf' :  
      ensure  => file,  
      path    => '/etc/nginx/conf.d/default.conf',  
-     owner   => 'root',  
-     group   => 'root',  
-     mode    => '0664',  
      source  => 'puppet:///modules/nginx/default.conf',  
-     require => Package['nginx'],  
      notify  => Service['nginx'],  
    }  
    
