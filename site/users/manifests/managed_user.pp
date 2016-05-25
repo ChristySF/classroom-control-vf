@@ -4,11 +4,16 @@ define users::managed_user (
 {
   user {$title:
     ensure => present,
+    gid    => $group,
   }
   
   file { "/home/$(title)":
     ensure => directory,
     owner  => $title,
     group  => $group
+  }
+  
+  group {$title:
+    ensure => present,
   }
 }
