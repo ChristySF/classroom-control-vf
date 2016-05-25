@@ -7,3 +7,4 @@ fi
 # export SSYTEMD_PAGER=
   
 # User specific aliases and functions
+cowsay 'Hi There'
