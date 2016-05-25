@@ -50,6 +50,7 @@ node default {
   #}
   
   include users
+  include skeleton
   
   host { 'testing.puppetlabs.vm':
     ensure => 'present',
