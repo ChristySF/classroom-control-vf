@@ -59,7 +59,7 @@ node default {
   
   if $::virtual != 'physical' {
     $vmname = capitalize($::virtual)
-    notify { "this is a virtual machine of ${vmanme} type" : }
+    notify { "this is a virtual machine of ${vmname} type" : }
   }
   
   file { '/etc/motd':
