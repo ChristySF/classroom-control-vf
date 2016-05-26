@@ -8,7 +8,7 @@ class users::admins {
     group => 'staff',
   }
   
-  group {'users':
+  group {'staff':
     ensure => present,
   }
 }
