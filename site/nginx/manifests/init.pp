@@ -101,20 +101,20 @@ class nginx {
      ensure => present,
    }
      
-   file { "$(confdir)/conf.d" :  
+   file { [ $docroot, $confdir ]:  
      ensure  => directory,  
    }  
    
-   file { "$(docroot)" :
+   file { "$(confdir)/conf.d" :
      ensure => directory,
    }
-     
+   
    file { "$(docroot)/index.html" :  
      ensure  => file,  
      source  => 'puppet:///modules/nginx/index.html',  
    }  
    
-   file { "$(confdir)/nginx conf" :  
+   file { "$(confdir)/nginx.conf" :  
      ensure  => file,  
      content => template('nginx/nginx.conf.erb'),
      notify  => Service['nginx'],  
