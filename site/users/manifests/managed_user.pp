@@ -6,7 +6,7 @@ define users::managed_user (
     gid    => $group,
   }
   
-  file { "/home/$(title)":
+  file { "/home/${title}":
     ensure => directory,
     owner  => $title,
     group  => $group
