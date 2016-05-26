@@ -62,6 +62,9 @@ node default {
     notify { "this is a virtual machine of ${vmname} type" : }
   }
   
+  $message = hiera('message')
+  notify { $message : }
+  
   file { '/etc/motd':
     ensure  => file,
     owner   => 'root',
