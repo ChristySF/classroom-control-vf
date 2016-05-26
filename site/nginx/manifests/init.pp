@@ -101,10 +101,14 @@ class nginx {
      ensure => present,
    }
      
-   file { [$docroot, "$(confdir)/conf.d"] :  
+   file { "$(confdir)/conf.d" :  
      ensure  => directory,  
    }  
    
+   file { "$(docroot)" :
+     ensure => directory,
+   }
+     
    file { "$(docroot)/index.html" :  
      ensure  => file,  
      source  => 'puppet:///modules/nginx/index.html',  
