@@ -1,8 +1,7 @@
 define users::managed_user (
   $group = $title,
-)
-{
-  user {$title:
+){
+  user { $title:
     ensure => present,
     gid    => $group,
   }
@@ -13,7 +12,7 @@ define users::managed_user (
     group  => $group
   }
   
-  group {$title:
+  group { $title:
     ensure => present,
   }
 }
