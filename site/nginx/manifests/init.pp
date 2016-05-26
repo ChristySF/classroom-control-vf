@@ -105,19 +105,22 @@ class nginx {
      ensure  => directory,  
    }  
    
-   file { "$(docroot)/index.html" :  
-     ensure  => file,  
+   file { 'index.html' :  
+     ensure  => file, 
+     path    => "${docroot}/index.html",
      source  => 'puppet:///modules/nginx/index.html',  
    }  
    
-   file { "$(confdir)/nginx.conf" :  
-     ensure  => file,  
+   file { 'nginx.conf' :  
+     ensure  => file,
+     path    => "${confdir}/nginx.conf",
      content => template('nginx/nginx.conf.erb'),
      notify  => Service['nginx'],  
    }  
    
-   file { "$(confdir)/conf.d/default conf" :  
-     ensure  => file,  
+   file { 'default conf' :  
+     ensure  => file,
+     path    => "${confdir}/conf.d/default.conf",
      content => template('nginx/default.conf.erb'),
      notify  => Service['nginx'],  
    }  
