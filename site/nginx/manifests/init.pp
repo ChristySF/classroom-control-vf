@@ -92,8 +92,8 @@ class nginx {
    }
    
    File {
-     owner   => 'root',
-     group   => 'root',
+     owner   => $owner,
+     group   => $group,
      mode    => '0644',
    }
    
@@ -104,10 +104,6 @@ class nginx {
    file { [ $docroot, $confdir ]:  
      ensure  => directory,  
    }  
-   
-   file { "$(confdir)/conf.d" :
-     ensure => directory,
-   }
    
    file { "$(docroot)/index.html" :  
      ensure  => file,  
